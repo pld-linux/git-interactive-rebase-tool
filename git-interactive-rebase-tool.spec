@@ -13,6 +13,7 @@ BuildRequires:	cargo
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	git-core >= 1.7.8
+ExclusiveArch:	%{x8664} %{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
