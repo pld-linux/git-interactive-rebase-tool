@@ -7,6 +7,7 @@ Group:		Development/Tools
 Source0:	https://github.com/MitMaro/git-interactive-rebase-tool/archive/%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	cf6ce6096646e68dad0a2dce4e5bc67e
 URL:		https://github.com/MitMaro/git-interactive-rebase-tool
+BuildRequires:	cargo
 Requires:	git-core >= 1.7.8
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -17,9 +18,11 @@ Terminal based sequence editor for git interactive rebase.
 %setup -q
 
 %build
+cargo -v build --release
 
 %install
 rm -rf $RPM_BUILD_ROOT
+cargo -v install --root $RPM_BUILD_ROOT%{_prefix} --path $PWD
 
 %clean
 rm -rf $RPM_BUILD_ROOT
